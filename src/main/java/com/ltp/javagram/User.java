@@ -9,6 +9,9 @@ import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.ltp.javagram.validation.Age;
+import com.ltp.javagram.validation.Username;
+
 public class User {
 
     @NotBlank(message = "First name cannot be blank")
@@ -19,6 +22,7 @@ public class User {
     @Size(min = 2, message = "Last name is too short")
     private String lastName;
 
+    @Username(message = "Cannot contain special or uppercase characters")
     @NotBlank(message = "Username cannot be blank")
     @Size(min = 7, message = "Username is too short")
     private String userName;
@@ -26,6 +30,7 @@ public class User {
     @Email(message = "Invalid Email")
     private String email;
 
+    @Age(message = "Must be at least 18")
     @Past(message = "date of birth must be in the past")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateOfBirth;
